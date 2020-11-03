@@ -90,7 +90,7 @@ func ClientInput(conn net.Conn) {
 	)
 	for {
 		// message input
-		var message = inputString("")
+		var message = inputString("[" + username + "]: ")
 		if len(message) != 0 {
 			// message formating
 			template = []byte(
@@ -125,7 +125,7 @@ func ClientOutput(conn net.Conn) {
 			}
 		}
 		// message output
-		fmt.Println(message)
+		fmt.Printf("\r\033[K%s\n[%s]: ", message, username)
 	}
 }
 
